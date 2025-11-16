@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: loadbalancer
+
+loadbalancer:
+  port: 8080
+  algorithm: round-robin
+  health-check-interval-seconds: 5
+  health-check-timeout-seconds: 2
+  backends:
+    - host: localhost
+      port: 9001
+    - host: localhost
+      port: 9002
+    - host: localhost
+      port: 9003
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.example.loadbalancer: INFO
+    root: INFO
+
+
+
+

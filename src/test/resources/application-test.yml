@@ -1,0 +1,15 @@
+loadbalancer:
+  port: 0
+  algorithm: round-robin
+  health-check-interval-seconds: 1
+  health-check-timeout-seconds: 1
+  backends:
+    - host: localhost
+      port: 19001
+    - host: localhost
+      port: 19002
+
+logging:
+  level:
+    com.example.loadbalancer: DEBUG
+    root: WARN
